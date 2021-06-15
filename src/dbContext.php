@@ -70,5 +70,24 @@ class dbContext{
         exit();
     }
    }//FIM FUNÇÃO DOLOGIN
+
+   public static function getProducts(){
+     //CRIA UMA INSTANCIA DE CONEXAO 
+    $con = self::getInstance();
+
+    //SQL para selecionar os dados do usuario dado email
+    $sql = 'SELECT * FROM products';
+    $stm = $con->prepare($sql);
+    //EXECUTE A QUERY
+    $stm->execute();
+    while($row = $stm->fetch(PDO::FETCH_ASSOC)){
+      $json[] = $row;
+    }
+    $retorno['dados'] = $json;
+    return $retorno;
+   }
+   public static function deleteProduct($id){}
+
+   public static function createProduct(){}
  }
 ?>
