@@ -10,29 +10,38 @@ if(isset($_SESSION['logado']) && ($_SESSION['logado']== 'sim' )){
 <head>
 <title>Login Page</title>
 <link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-<style type="text/css">
-    #login-alert{
-        display: none;
-    }
- 
-    .margin-top-pq{
-        margin-top: 10px;
-    }
- 
-    .margin-top-md{
-        margin-top: 25px;
-    }
- 
-    .margin-bottom-md{
-        margin-bottom: 25px;
-    }
- 
-    .padding-top-md{
-        padding-top: 30px;
-    }
-    </style>
+<link href="vendor/customCss/login.css" rel="stylesheet"/>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
+<div class="login-form">
+<form action="src/login.php" method="post" id="login-form" class="form-horizontal" role="form">
+		<div class="avatar">
+			<img src="assets/images/avatar.png" alt="Avatar">
+		</div>
+        <h2 class="text-center">Login</h2>   
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control" name="email" id="email" placeholder="example@example.com" required="required">
+            </div>
+        </div>
+		<div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="password" class="form-control" name="senha" id="senha" placeholder="Insira sua Senha! " required="required">
+            </div>
+        </div>        
+        <div class="form-group">
+            <center>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" name="btn-login" id="btn-login">Logar</button>
+            OU
+            <button type="submit" class="btn btn-primary btn-lg btn-block" name="btn-cadastro" id="btn-cadastro">Cadastre-se</button>                
+            </center>
+        </div>
+
+    </form>
+</div><!-- 
 <div class="container">    
         <div id="loginbox" class="mainbox col-md-7 col-md-offset-3 col-sm-8 col-sm-offset-2 margin-top-md">                    
             <div class="panel panel-primary" >
@@ -45,7 +54,7 @@ if(isset($_SESSION['logado']) && ($_SESSION['logado']== 'sim' )){
                         <span class="glyphicon glyphicon-exclamation-sign"></span>
                         <span id="mensagem"></span>
                     </div>      
-                    <form id="login-form" class="form-horizontal" role="form" action="./src/login.php" method="post">             
+                   <form id="login-form" class="form-horizontal" role="form" action="./src/login.php" method="post">             
                         <div class="input-group margin-bottom-md">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             <input type="email" class="form-control" id="email" name="email" required placeholder="Informe seu E-mail">                                        
@@ -64,7 +73,7 @@ if(isset($_SESSION['logado']) && ($_SESSION['logado']== 'sim' )){
                             </div>
                         </div> 
  
-                    </form>     
+                    </form>   -->  
                 </div>  
  
             </div>  

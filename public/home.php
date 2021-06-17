@@ -1,4 +1,7 @@
 <?php
+
+
+require __DIR__.'/../vendor/autoload.php';
 require __DIR__.'/../src/verificaSessao.php';
 
 ?>
@@ -6,6 +9,7 @@ require __DIR__.'/../src/verificaSessao.php';
     <head>
         <title>Home Page</title>
         <link href="./../vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -18,10 +22,10 @@ require __DIR__.'/../src/verificaSessao.php';
         </nav>
         <div class="container-fluid" style="padding-top: 25px;padding-bottom: 25px;">
             <center>
-                <form method="POST" action="./../src/uploadXLS.php">
+                <form method="POST" action="./../src/uploadXLS.php" id="formUpload" name="formUpload" enctype="multipart/form-data">
                     <div class="input-group mb-3">
-                        <input type="file" class="form-control" id="inputGroupFile02">
-                        <label class="input-group-text" for="inputGroupFile02">Carregar</label>
+                        <input type="file" class="form-control" id="arquivo" name="arquivo">
+                        <button type="submit" id="upload" class="btn btn-outline-success" >Carregar</button>
                     </div>
                 </form>
             </center>
@@ -42,13 +46,13 @@ require __DIR__.'/../src/verificaSessao.php';
                         </tr>
                     </thead>
                     <tbody>
-                        
+
                     </tbody>
                 </table>
             </div>
         </div>
         <script type='text/javascript' src="./../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js" ></script>
         <script type='text/javascript' src="./../vendor/components/jquery/jquery.js" ></script>
-        <script type='text/javascript' src="./../vendor/customjs/homePage.js" ></script>
+        <script type='text/javascript' src="./../vendor/customjs/homePage.js" ></script> 
     </body>
 </html>

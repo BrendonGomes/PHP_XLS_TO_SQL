@@ -86,8 +86,42 @@ class dbContext{
     $retorno['dados'] = $json;
     return $retorno;
    }
-   public static function deleteProduct($id){}
+   public static function deleteProduct($id){
+     //CRIA UMA INSTANCIA DE CONEXAO 
+     $con = self::getInstance();
 
-   public static function createProduct(){}
+    //SQL para selecionar os dados do usuario dado email
+    $sql = "DELETE FROM products WHERE id_product= :id";
+    $stm = $con->prepare($sql);
+    $stm->bindParam(':id', $id);
+
+    //EXECUTE A QUERY
+    $stm->execute();
+   }
+
+   public static function createProduct($json){
+    //convertendo valores recebidos
+
+    $json[0] = intval($json[0]);
+    $json[1] = strval($json[1]);
+    $json[2] = strval($json[2]);
+    $json[3] = strval($json[3]);
+    $json[4] = (isset($json[4])) ? strval($json[4]) : '--' ;
+
+     //CRIA UMA INSTANCIA DE CONEXAO 
+     $con = self::getInstance();
+
+    //SQL para inserir produto no banco
+    $sql = "INSERT INTO products (name_product, price, stock, fab_date, ean) VALUES (:nome, :preco, :estoque, :fab, :ean)";
+    $stm = $con->prepare($sql);
+    $stm->bindParam(':nome', $json[1]);
+    $stm->bindParam(':preco', $json[2]);
+    $stm->bindParam(':estoque', $json[3]);
+    $stm->bindParam(':fab', $json[4]);
+    $stm->bindParam(':ean', $json[0]);
+
+    //EXECUTE A QUERY
+    $stm->execute();
+   }
  }
 ?>

@@ -1,8 +1,8 @@
 <?php
+require __DIR__.'/../vendor/autoload.php';
 
 use dbContext\dbContext;
 
-require __DIR__.'/../vendor/autoload.php';
 
 $email = (isset($_POST['email'])) ? $_POST['email'] : '' ;
 $senha = (isset($_POST['senha'])) ? $_POST['senha'] : '' ;
