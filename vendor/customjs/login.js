@@ -1,5 +1,30 @@
 $('document').ready(function(){
 
+$('#btn-create-user').click(function(){
+    var data = $('#cad-form').serialize();
+
+    $.ajax({
+        type : 'POST',
+        url  : './src/createUser.php',
+        data : data,
+        dataType: 'json',
+        beforeSend: function()
+        {	
+            $("#btn-create-user").html('Validando ...');
+        },
+        success :  function(response){						
+            if(response.codigo == "1"){	
+                alert('Sucesso ao criar usuário!!')
+                document.location.reload();
+            }
+            else{			
+                alert('Erro ao criar usuário!!');
+            }
+        }
+    });
+
+});
+
 $("#btn-login").click(function(){
     var data = $("#login-form").serialize();
         
@@ -19,9 +44,8 @@ $("#btn-login").click(function(){
                 window.location.href = "./public/home.php";
             }
             else{			
-                $("#btn-login").html('Entrar');
-                $("#login-alert").css('display', 'block')
-                $("#mensagem").html('<strong>Erro! </strong>' + response.msg);
+                alert('Email ou senha incorretos!');
+                document.location.reload();
             }
         }
     });

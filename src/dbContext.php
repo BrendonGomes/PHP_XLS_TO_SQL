@@ -35,6 +35,23 @@ class dbContext{
      return self::$pdo;  
    }  
 
+   public static function createUser($nome, $email, $senha){
+        //CRIA UMA INSTANCIA DE CONEXAO 
+    $con = self::getInstance();
+
+    //cria um hash para senha
+    $senha = password_hash($senha, PASSWORD_DEFAULT);
+
+    //SQL para selecionar os dados do usuario dado email
+    $sql = "INSERT INTO users(name_user, email, password_hash) VALUES (:nome, :email, :pass)";
+    $stm = $con->prepare($sql);
+    $stm->bindParam(':nome', $nome);
+    $stm->bindParam(':email', $email);
+    $stm->bindParam(':pass', $senha);
+    //EXEC QUERY
+    $stm->execute();
+   }
+
    public static function doLogin($email, $senha){
     //CRIA UMA INSTANCIA DE CONEXAO 
     $con = self::getInstance();
