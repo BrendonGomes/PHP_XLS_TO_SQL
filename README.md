@@ -3,7 +3,7 @@ An example with authentication and import/convert a XLS file into Mysql database
 
 #Requisits
 
-PHP >~7.4
+PHP >~ 7.4
 Mysql (mariaDB) >~ 10.4
 Composer >~ 2.1.3
 Apache  >~ 2.4
